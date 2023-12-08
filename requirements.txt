@@ -1,0 +1,4 @@
+borb
+fastapi[all]
+gunicorn
+uvicorn
