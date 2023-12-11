@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import shutil
 import os
 
-import .replace as replacer
+import replace as replacer
 
 app = FastAPI()
 
@@ -20,23 +20,28 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+async def home():
+    return { "success": True }
+
 @app.post("/process_pdf")
 async def process_pdf_endpoint(
-    pdf_file: UploadFile = Form(...),
-    replaced_text: str = Form(...),
+    file: UploadFile = Form(...),
+    old_text: str = Form(...),
     new_text: str = Form(...),
 ):
     try:
+        original_filename = file.filename
         # Save the uploaded PDF file to a temporary location
-        with open(pdf_file.filename, "wb") as pdf_content:
-            shutil.copyfileobj(pdf_file.file, pdf_content)
+        with open(original_filename, "wb") as pdf_content:
+            shutil.copyfileobj(file.file, pdf_content)
 
         # Process the PDF and get the output file path
-        new_filename =
+        new_filename = "new_" + original_filename
         replacer.replace_text_in_pdf(
-            pdf_file.filename,
+            original_filename,
             new_filename,
-            replaced_text,
+            old_text,
             new_text
         )
 
@@ -49,5 +54,6 @@ async def process_pdf_endpoint(
 
     finally:
         # Clean up: Remove the temporary PDF file
-        os.remove(pdf_file.filename)
+        # os.remove(file.filename)
+        pass
 
