@@ -1,3 +1,4 @@
+# adapted from https://stackoverflow.com/a/69439785
 import os
 import argparse
 from PyPDF2 import PdfReader, PdfWriter
