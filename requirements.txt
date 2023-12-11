@@ -1,4 +1,6 @@
-borb
 fastapi[all]
 gunicorn
 uvicorn
+
+borb
+pypdf2

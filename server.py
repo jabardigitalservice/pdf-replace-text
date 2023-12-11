@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import shutil
 import os
 
-import replace as replacer
+import src.replace_pypdf as replacer
 
 app = FastAPI()
 
@@ -54,6 +54,5 @@ async def process_pdf_endpoint(
 
     finally:
         # Clean up: Remove the temporary PDF file
-        # os.remove(file.filename)
-        pass
+        os.remove(file.filename)
 
