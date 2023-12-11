@@ -19,5 +19,6 @@ Using Python 3 with FastAPI (for HTTP API) and borb (for PDF processing)
 curl --location 'http://127.0.0.1:8000/process_pdf' \
 --form 'file=@"./test.pdf"' \
 --form 'old_text="##NOMOR_SURAT##"' \
---form 'new_text="CONTOH AJA"'
+--form 'new_text="CONTOH AJA"' \
+-o hasil.pdf
 ```
