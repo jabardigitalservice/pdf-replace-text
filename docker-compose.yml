@@ -8,6 +8,5 @@ services:
     volumes:
       - .:/app
     # command for local development server
-    #command: uvicorn server:app --port 80 --host 0.0.0.0 --reload
-    command: tail -f /dev/null
+    command: uvicorn server:app --port 80 --host 0.0.0.0 --reload
 

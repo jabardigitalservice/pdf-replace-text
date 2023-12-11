@@ -24,9 +24,10 @@ def replace_text_in_pdf(input_filename, output_filename, replaced_text, new_text
 
 
 if __name__ == "__main__":
+    filename = "output.pdf"
     replace_text_in_pdf(
-        "test.pdf",
-        "result.pdf",
-        "{{nomor_surat}}",
+        filename,
+        "new_" + filename,
+        "##NOMOR_SURAT##",
         "hasil"
     )
